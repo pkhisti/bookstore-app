@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.image-min-height {
+  min-height: 200px;
+  max-height: 200px;
+}
+
+.div-min-height {
+  min-height: 350px;
+  max-height: 350px;
+}
+
+.header-min-height {
+  min-height: 50px;
+  max-height: 50px;
+}
