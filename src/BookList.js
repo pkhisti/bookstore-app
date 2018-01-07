@@ -4,10 +4,11 @@ import {Panel, DropdownButton, MenuItem} from 'react-bootstrap';
 class BookList extends React.Component {
     constructor(props) {
         super(props);
+        this.handleMoveClick = this.handleMoveClick.bind(this);
     }
 
-    handleMoveClick(e){
-        console.log(e)
+    handleMoveClick(e,id){
+        this.props.handleMoveClick(e,id);
     }
 
     render() {
@@ -15,15 +16,16 @@ class BookList extends React.Component {
             return (
                 <div className="col-sm-3 div-min-height" key={book.id}>
                     <img src={book.imageLinks.thumbnail} alt={book.title} className="img-thumbnail image-min-height"/>
-                    <div className="header-min-height"><h5>{book.title}</h5></div>
+                    <div className="header-min-height">{book.title}
+                    <div className="title-subheader">{book.publisher}</div></div>
                     	<DropdownButton
                             bsStyle="default"
                             title="Move to.."
                             id={book.id}>
-                            <MenuItem  onSelect={e => this.handleMoveClick(e)} eventKey="1">Currently Reading</MenuItem>
-                            <MenuItem  onSelect={e => this.handleMoveClick(e)} eventKey="2">Want to Read</MenuItem>
-                            <MenuItem  onSelect={e => this.handleMoveClick(e)} eventKey="3">Read</MenuItem>
-                            <MenuItem  onSelect={e => this.handleMoveClick(e)} eventKey="4">None</MenuItem>
+                            <MenuItem  onSelect={e => this.handleMoveClick(e,book.id)} eventKey="currentlyReading">Currently Reading</MenuItem>
+                            <MenuItem  onSelect={e => this.handleMoveClick(e,book.id)} eventKey="wantToRead">Want to Read</MenuItem>
+                            <MenuItem  onSelect={e => this.handleMoveClick(e,book.id)} eventKey="read">Read</MenuItem>
+                            <MenuItem  onSelect={e => this.handleMoveClick(e,book.id)} eventKey="none">None</MenuItem>
                         </DropdownButton>
                 </div>
             )

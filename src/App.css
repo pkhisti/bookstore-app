@@ -27,6 +27,7 @@
 .image-min-height {
   min-height: 200px;
   max-height: 200px;
+  text-align: left;
 }
 
 .div-min-height {
@@ -35,6 +36,15 @@
 }
 
 .header-min-height {
-  min-height: 50px;
-  max-height: 50px;
+  min-height: 80px;
+  max-height: 80px;
+}
+
+.title-subheader {
+  font-size:10px;
+  color: gray;
+}
+
+.search-box {
+  width: 100%
 }
