@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-import {Navbar,NavItem,Nav} from 'react-bootstrap'
+import {Navbar} from 'react-bootstrap'
 import BookList from './BookList';
 import * as BooksAPI from './BooksAPI';
 import BookSearch from './BookSearch';
-import {Link, Route, Router} from 'react-router-dom';
+import {Link, Route} from 'react-router-dom';
 
 class App extends Component {
   //AIzaSyCupPRPb1lZp8cLz0c3hU_Pm28zO1rV4u0
@@ -44,7 +44,7 @@ class App extends Component {
     });
   }
 
-  handleMoveClick(shelf,id) {
+  handleMoveClick = (id,shelf) => {
      BooksAPI.update(id,shelf).then((data)=>{
         this.fetchData();
      });
@@ -86,7 +86,7 @@ class App extends Component {
   const Search  = (props) => {
         return (
            <div>
-                <Link className="pullright" to="/home">Go Back</Link>
+                <Link className="pullright" to="/">Go Back</Link>
                 <br/>
                 <br/>
                <BookSearch className="search-box" onSearch={this.handleSearch} quuery={this.state.query}/>
@@ -107,7 +107,7 @@ class App extends Component {
             </Navbar>
         </header>
         <div className="container">
-              <Route path="/home" component={Main}/>
+              <Route path="/" component={Main}/>
               <Route path="/search" component={Search}/>
           </div>
       </div>
