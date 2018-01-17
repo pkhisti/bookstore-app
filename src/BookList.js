@@ -17,7 +17,9 @@ class BookList extends React.Component {
                 <div className="col-sm-3 div-min-height" key={book.id}>
                     <img src={book.imageLinks.thumbnail} alt={book.title} className="img-thumbnail image-min-height"/>
                     <div className="header-min-height">{book.title}
-                    <div className="title-subheader">{book.publisher}</div></div>
+                    <div className="title-subheader">{book.publisher}</div>
+                    <div className="title-subheader">{book.shelf}</div>
+                    </div>
                     	<DropdownButton
                             bsStyle="default"
                             title="Move to.."

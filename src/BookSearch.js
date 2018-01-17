@@ -6,17 +6,17 @@ class BookSearch extends React.Component {
     constructor(props){
         super(props);
         this.handleChange = this.handleChange.bind(this);
-        this.state = {
-            query: ""
-        }
+        // this.state = {
+        //     query: ""
+        // }
     }
 
     handleChange(e) {
         this.props.onSearch(e.target.value);
-        console.log(e.target.value)
-        this.setState({
-             query: e.target.value
-        })
+        //console.log(e.target.value)
+        // this.setState({
+        //      query: e.target.value
+        // })
 	}
 
 
@@ -26,10 +26,11 @@ class BookSearch extends React.Component {
                  <FormGroup>
                  	<InputGroup>
                       <DebounceInput
+                            className="form-control"
                             minLength={2}
-                            debounceTimeout={300}
+                            debounceTimeout={600}
                             onChange={event => this.handleChange(event)}
-                            value={this.state.query} placeholder="Search"
+                            placeholder="Search"
                             onFocus={this.props.toggleSearch} />
                     <InputGroup.Button>
                         <Button>Go!</Button>

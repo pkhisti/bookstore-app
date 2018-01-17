@@ -17,8 +17,7 @@ class App extends Component {
       allBooks: [],
       loadData:false,
       isSearching: false,
-      searchResult: [],
-      query: ""
+      searchResult: []
     }
     this.handleSearch = this.handleSearch.bind(this);
     this.handleMoveClick = this.handleMoveClick.bind(this);
@@ -54,9 +53,16 @@ class App extends Component {
      BooksAPI.search(query).then((data)=>{
       if(data != undefined) {
         if(data.length > 0) {
+          //check the shelf of the books from the search result and all book state
+           data = data.map((book)=>{
+             let existingBook = this.state.allBooks.filter((item)=>item.id === book.id);
+             if(existingBook.length > 0 ) {
+               book.shelf = existingBook[0].shelf;
+             }
+             return book;
+           });
             this.setState({
-              searchResult: data,
-              query: query
+              searchResult: data
             });
           } else {
          this.setState({
@@ -89,7 +95,7 @@ class App extends Component {
                 <Link className="pullright" to="/">Go Back</Link>
                 <br/>
                 <br/>
-               <BookSearch className="search-box" onSearch={this.handleSearch} quuery={this.state.query}/>
+               <BookSearch className="search-box" onSearch={this.handleSearch} />
                <BookList books={this.state.searchResult} heading="Search Result" handleMoveClick={this.handleMoveClick}/>
             </div>
         )
