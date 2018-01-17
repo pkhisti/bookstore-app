@@ -8,7 +8,7 @@ class BookList extends React.Component {
     }
 
     handleMoveClick = (e,id) =>{
-        this.props.handleMoveClick(e,id);
+        this.props.handleMoveClick(id,e);
     }
 
     render() {

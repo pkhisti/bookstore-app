@@ -107,8 +107,8 @@ class App extends Component {
             </Navbar>
         </header>
         <div className="container">
-              <Route path="/" component={Main}/>
-              <Route path="/search" component={Search}/>
+              <Route exact path="/" component={Main}/>
+              <Route exact path="/search" component={Search}/>
           </div>
       </div>
     );
