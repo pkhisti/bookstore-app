@@ -22,6 +22,7 @@ class App extends Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.handleMoveClick = this.handleMoveClick.bind(this);
     this.handleMoveClick = this.handleMoveClick.bind(this);
+
   }
 
   componentDidMount() {
@@ -51,7 +52,7 @@ class App extends Component {
 
   handleSearch(query) {
      BooksAPI.search(query).then((data)=>{
-      if(data != undefined) {
+      if(data !== undefined) {
         if(data.length > 0) {
           //check the shelf of the books from the search result and all book state
            data = data.map((book)=>{
@@ -77,6 +78,7 @@ class App extends Component {
     });
   }
   render() {
+    const searchPage = window.location.href.split("/")[3];
     const Main  = (props) => {
         return (
            <div>
@@ -92,10 +94,6 @@ class App extends Component {
   const Search  = (props) => {
         return (
            <div>
-                <Link className="pullright" to="/">Go Back</Link>
-                <br/>
-                <br/>
-               <BookSearch className="search-box" onSearch={this.handleSearch} />
                <BookList books={this.state.searchResult} heading="Search Result" handleMoveClick={this.handleMoveClick}/>
             </div>
         )
@@ -107,13 +105,21 @@ class App extends Component {
            <Navbar>
               <Navbar.Header>
               <Navbar.Brand>
-                <a href="#">My Bookstore</a>
+                My Bookstore
               </Navbar.Brand>
               </Navbar.Header>
             </Navbar>
         </header>
         <div className="container">
               <Route exact path="/" component={Main}/>
+              <Link className={"pullright " + (searchPage==='search' ? '' : 'hidden')}  to="/">Go Back</Link>
+              <br/>
+              <br/>
+              <div className={(searchPage==='search' ? '' : 'hidden')}>
+              <BookSearch  className="search-box" onSearch={this.handleSearch} />
+              </div>
+              <br/>
+              <br/>
               <Route exact path="/search" component={Search}/>
           </div>
       </div>

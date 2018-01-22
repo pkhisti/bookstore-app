@@ -1,5 +1,4 @@
 import React from 'react';
-import {FormGroup,FormControl,InputGroup,Button} from 'react-bootstrap';
 import {DebounceInput} from 'react-debounce-input';
 
 class BookSearch extends React.Component {
@@ -19,25 +18,16 @@ class BookSearch extends React.Component {
         // })
 	}
 
-
     render() {
         return (
             <div>
-                 <FormGroup>
-                 	<InputGroup>
-                      <DebounceInput
-                            className="form-control"
-                            minLength={2}
-                            debounceTimeout={600}
-                            onChange={event => this.handleChange(event)}
-                            placeholder="Search"
-                            onFocus={this.props.toggleSearch} />
-                    <InputGroup.Button>
-                        <Button>Go!</Button>
-				    </InputGroup.Button>
-                    </InputGroup>
-                </FormGroup>
-
+            <DebounceInput
+                className="form-control"
+                minLength={2}
+                debounceTimeout={600}
+                onChange={event => this.handleChange(event)}
+                placeholder="Search"
+                onFocus={this.props.toggleSearch} />
             </div>
         )
     }
